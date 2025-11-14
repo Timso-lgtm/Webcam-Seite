@@ -1,0 +1,196 @@
+ * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(135deg, #C0C0C0 10%, #000000 100%);
+                min-height: 100vh;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .container {
+                background: white;
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                padding: 40px;
+                max-width: 700px;
+                width: 100%;
+                margin: 0;
+            }
+            .navigation {
+                background: white;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                padding: 12px 20px;
+                margin: 0 0 70px 0;
+                width: 100%;
+                max-width: 700px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .navigation h1 {
+                font-size: 1.2em;
+                margin: 0;
+                color: #333;
+            }
+            .navigation ul {
+                list-style: none;
+                display: flex;
+                gap: 20px;
+                margin: 0;
+                padding: 0;
+            }
+            .navigation li a {
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 0.9em;
+                transition: color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 6px;
+                border-radius: 8px;
+            }
+            .navigation li a:hover {
+                color: #ffffff;
+                transform: translateY(-3px);
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+            }
+            .navigation li a img {
+                display: block;
+                transition: transform 0.18s ease, filter 0.18s ease;
+            }
+            .navigation li a:hover img {
+                transform: scale(1);
+                filter: drop-shadow(0 8px 14px rgba(0,0,0,0.25)) saturate(1.1);
+            }
+            .navigation li a:active {
+                transform: translateX(0);
+            }
+
+            h1 {
+                text-align: center;
+                color: #333;
+                margin-bottom: 10px;
+                font-size: 2.5em;
+            }
+            .subtitle {
+                text-align: center;
+                color: #999;
+                margin-bottom: 30px;
+                font-size: 0.9em;
+            }
+            .video-container {
+                background: #000;
+                border-radius: 15px;
+                overflow: hidden;
+                margin-bottom: 30px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+            .video-container img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+            
+            .button {
+                text-align: center;
+            }
+
+            .button-stop {
+               width: 9rem;
+                height: 3rem;
+                border-radius: 30rem;
+                font-size: 15px;
+                border: none;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+                box-shadow: 6px 6px 12px #c5c5c5,
+                            -6px -6px 12px #ffffff;
+            }
+
+            button::before {
+                content: '';
+                width: 0;
+                height: 3rem;
+                border-radius: 30rem;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-image: linear-gradient(to right, #C0C0C0 0%, #000000 100%);
+                transition: 0.5s ease;
+                display: block;
+                z-index: -1;
+            }
+            button:hover::before {
+                width: 9rem;
+            }
+            button:active {
+                transform: scale(0.93)
+
+
+            }
+            .status {
+                text-align: center;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 1px solid #eee;
+                color: #999;
+                font-size: 0.9em;
+            }
+            .status-dot {
+                display: inline-block;
+                width: 8px;
+                height: 8px;
+                background: #4caf50;
+                border-radius: 50%;
+                margin-right: 5px;
+                animation: pulse 2s infinite;
+            }
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.5; }
+            }
+
+             @media (max-width: 600px) {
+                .navigation {
+                    padding: 10px 14px;
+                    margin-bottom: 70px;
+                }
+                .navigation h1 {
+                    font-size: 1.5rem;
+                }
+                .navigation ul {
+                    gap: 12px;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                }
+                .container {
+                    padding: 18px;
+                    margin: 0 12px;
+                }
+                h1 {
+                    font-size: 1.6rem;
+                }
+                .subtitle { font-size: 0.85rem; }
+                .video-container { border-radius: 10px; }
+                .video-container img { width: 100%; height: auto; }
+                .button-stop {
+                    width: 8rem;
+                    height: 2.5rem;
+                    font-size: 0.9rem;
+                    border-radius: 30rem;
+                    color: #000;
+                }
+                .status { font-size: 0.85rem; }
+            }
+            @viewport {
+                width: device-width;
+                zoom: 1.0;
+            }
