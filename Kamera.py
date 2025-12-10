@@ -5,7 +5,7 @@ from flask import Flask, Response, request, render_template_string, redirect
 from picamera import PiCamera
 from picamera.array import PiRGBArray
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='.')
 app.secret_key = 'roboter_secret_key'  # Für Sessions
 
 
@@ -59,6 +59,17 @@ def webcam():
     with open('Webcam.html', 'r', encoding='utf-8') as f:
         return f.read()
 
+@app.route('/team')
+def team():
+    with open('Team.html', 'r', encoding='utf-8') as f:
+        return f.read()
+
+app.route('/infos')
+def infos():
+    with open('Infos.html', 'r', encoding='utf-8') as f:
+        return f.read()
+
+
 @app.route('/video_feed')
 def video_feed():
     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
@@ -68,6 +79,12 @@ def stop_stream():
     global stream_active
     stream_active = False
     return "Stream ist geschlossen."
+
+
+
+@app.route('/stop')
+def stop_stream_alias():
+    return stop_stream()
 
 
 if __name__ == '__main__':

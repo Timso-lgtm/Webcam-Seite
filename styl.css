@@ -100,9 +100,12 @@
             
             .button {
                 text-align: center;
+                margin-bottom: 1rem;
+                
+                
             }
 
-            .button-stop {
+            .button-stop-start {
                width: 9rem;
                 height: 3rem;
                 border-radius: 30rem;
@@ -113,6 +116,7 @@
                 z-index: 1;
                 box-shadow: 6px 6px 12px #c5c5c5,
                             -6px -6px 12px #ffffff;
+                
             }
 
             button::before {
