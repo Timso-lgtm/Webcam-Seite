@@ -1,8 +1,10 @@
+/* General Style */
  * {
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
             }
+            /* Body and Container Style */
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 background: linear-gradient(135deg, #C0C0C0 10%, #000000 100%);
@@ -12,6 +14,9 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            
+            /* Container Style */
             .container {
                 background: white;
                 border-radius: 20px;
@@ -20,7 +25,31 @@
                 max-width: 700px;
                 width: 100%;
                 margin: 0;
+                
+                
             }
+
+            .container-wrapper {
+                display: flex;
+                flex-direction: row;
+                gap: 2rem;
+                justify-content: center;
+                width: 100%;
+                max-width: 1200px;
+                
+            }
+
+            /* Container Controller Style */
+            .container-controller {
+                background: white;
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                padding: 40px;
+                max-width: 700px;
+                width: 100%;
+                margin: 30px 0 0 0;
+            }
+            /* Navigation Style */
             .navigation {
                 background: white;
                 border-radius: 15px;
@@ -33,11 +62,13 @@
                 justify-content: space-between;
                 align-items: center;
             }
+            /* Navigation Element Style */
             .navigation h1 {
                 font-size: 1.2em;
                 margin: 0;
                 color: #333;
             }
+            /* Navigation List Style */
             .navigation ul {
                 list-style: none;
                 display: flex;
@@ -45,6 +76,7 @@
                 margin: 0;
                 padding: 0;
             }
+            /* Navigation List Icon Style */
             .navigation li a {
                 text-decoration: none;
                 font-weight: 600;
@@ -56,35 +88,41 @@
                 padding: 6px;
                 border-radius: 8px;
             }
+            /* Navigation List Icon Hover Effect */
             .navigation li a:hover {
                 color: #ffffff;
                 transform: translateY(-3px);
                 box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
             }
+            /* Navigation List Icon Active Effect */
             .navigation li a img {
                 display: block;
                 transition: transform 0.18s ease, filter 0.18s ease;
             }
+            /* Navigation List Icon Hover Image Effect */
             .navigation li a:hover img {
                 transform: scale(1);
                 filter: drop-shadow(0 8px 14px rgba(0,0,0,0.25)) saturate(1.1);
             }
+            /* Navigation List Icon Active Image Effect */
             .navigation li a:active {
                 transform: translateX(0);
             }
-
+            /* Title and Subtitle Style */
             h1 {
                 text-align: center;
                 color: #333;
                 margin-bottom: 10px;
                 font-size: 2.5em;
             }
+            /* Subtitle Style */
             .subtitle {
                 text-align: center;
                 color: #999;
                 margin-bottom: 30px;
                 font-size: 0.9em;
             }
+            /* Video Container Style */
             .video-container {
                 background: #000;
                 border-radius: 15px;
@@ -92,19 +130,18 @@
                 margin-bottom: 30px;
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             }
+            /* Video Image Style */
             .video-container img {
                 width: 100%;
                 height: auto;
                 display: block;
             }
-            
+            /* Button Style */
             .button {
                 text-align: center;
                 margin-bottom: 1rem;
-                
-                
             }
-
+            /* Start/Stop Button Style */
             .button-stop-start {
                width: 9rem;
                 height: 3rem;
@@ -116,38 +153,39 @@
                 z-index: 1;
                 box-shadow: 6px 6px 12px #c5c5c5,
                             -6px -6px 12px #ffffff;
-                
             }
-
+            /* Start/Stop Button Before Element Style */
             button::before {
-                content: '';
+                content: ''; 
                 width: 0;
                 height: 3rem;
-                border-radius: 30rem;
-                position: absolute;
-                top: 0;
-                left: 0;
+                border-radius: 30rem; 
+                position: absolute; 
+                top: 0; 
+                left: 0; 
                 background-image: linear-gradient(to right, #C0C0C0 0%, #000000 100%);
                 transition: 0.5s ease;
                 display: block;
                 z-index: -1;
             }
+            /* Start/Stop Button Hover Effect */
             button:hover::before {
                 width: 9rem;
             }
+            /* Start/Stop Button Active Effect */
             button:active {
-                transform: scale(0.93)
-
-
+                transform: scale(0.93);
             }
+            /* Status Style */
             .status {
-                text-align: center;
+                text-align: center; 
                 margin-top: 20px;
                 padding-top: 20px;
                 border-top: 1px solid #eee;
                 color: #999;
                 font-size: 0.9em;
             }
+            /* Status Dot Style */
             .status-dot {
                 display: inline-block;
                 width: 8px;
@@ -157,44 +195,408 @@
                 margin-right: 5px;
                 animation: pulse 2s infinite;
             }
-            @keyframes pulse {
-                0%, 100% { opacity: 1; }
-                50% { opacity: 0.5; }
+            /* Status Dot Pulse Animation */
+            .bottom-right-image {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            }
+            /* Side Card Style */
+            :root{ /* Farben definieren */
+              --accent:#000000;
+              --text-soft:#ffffff;
+              --text-main:#000000;
+            }
+ 
+            /* Side Card Style */
+            .side-card{ 
+              padding:14px;
+              border-radius:18px;
+              background: rgba(255,255,255,0.06);
+              border:1px solid rgba(255,255,255,0.12);
+              box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+            }
+            /* Side Title Style */
+            .side-title{
+              font-size:.8rem;
+              text-transform:uppercase;
+              letter-spacing:.18em;
+              color:#cfd6ea;
+              margin-bottom:10px;
+            }
+            
+            /* PS5 Controller */
+            
+            .controller-shell{
+              margin-top: 6px;
+              background: radial-gradient(circle at top, #8f8f8f, #b4b4b4 60%, #e0e0e0 100%);
+              border-radius: 20px;
+              padding: 14px 12px 10px;
+              position: relative;
+              box-shadow: 0 18px 40px rgba(128, 128, 128, 0.7);
+              overflow: hidden;
+            }
+            /* Light Reflection Effect */
+            .controller-shell::before{
+              content: "";
+              position: absolute;
+              inset: 0;
+              border-radius: inherit;
+              background: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.25), transparent 60%);
+              opacity: 0.9;
+              pointer-events: none;
+            }
+            /* Top Row Style */
+            .controller-top-row{
+              display:flex;
+              justify-content:space-between;
+              align-items:baseline;
+              margin-bottom:10px;
+              position:relative;
+              z-index:1;
+            }
+            /* Status Style */
+            .controller-status{
+              font-size: 0.7rem;
+              letter-spacing: 0.16em;
+              text-transform: uppercase;
+              color: #000000;
+            }
+            /* Accent Color */
+            .controller-status span{color: var(--accent);}
+            /* Last Button Style */
+            .controller-last-btn{
+              font-size: 0.72rem;
+              color: #000000;
+              text-align:right;
+            }
+            
+            /* Last Button Text Color */
+            .controller-last-btn strong{color:#000000;}
+            /* Controller Body Style */
+            .controller-body{
+              position: relative;
+              width: 100%;
+              aspect-ratio: 5 / 2;
+              margin: 0 auto;
+            }
+            /* Controller Base Center Style */
+            .controller-base-center{
+              position: absolute;
+              left: 10%; right: 10%;
+              top: 24%; bottom: 32%;
+              border-radius: 60px;
+              background: radial-gradient(circle at top, #ffffff, #e5e7eb);
+              box-shadow:
+                0 0 0 1px rgba(15, 23, 42, 0.6),
+                0 18px 35px rgba(0, 0, 0, 0.9);
+            }
+            /* Controller Base Center Inner Shadow */
+            .controller-base-center::after{
+              content: "";
+              position: absolute;
+              left: 25%; right: 25%;
+              top: 40%; bottom: -25%;
+              border-radius: 40px 40px 70px 70px;
+              background: radial-gradient(circle at top, #111827, #020617);
+              box-shadow:
+                0 0 0 1px rgba(15, 23, 42, 0.8),
+                0 12px 24px rgba(0, 0, 0, 0.9);
+            }
+            /* Controller Grip Style */
+            .controller-grip{
+              position: absolute;
+              top: 36%;
+              width: 30%; height: 65%;
+              border-radius: 80% 40% 80% 40%;
+              background: radial-gradient(circle at 20% 10%, #ffffff, #e5e7eb);
+              box-shadow:
+                0 0 0 1px rgba(15, 23, 42, 0.5),
+                0 19px 35px rgba(114, 114, 114, 0.9);
+              overflow: hidden;
+            }
+            /* Left and Right Grip Positioning */
+            .controller-grip.left{ left: 0%;  transform: rotate(-8deg); }
+            .controller-grip.right{ right: 0%; transform: scaleX(-1) rotate(-8deg); }
+            /* Grip Inner Shadow */
+            .controller-grip::after{
+              content: "";
+              position: absolute;
+              left: 5%; right: -10%;
+              bottom: -5%;
+              height: 55%;
+              border-radius: 70% 40% 80% 60%;
+              background: radial-gradient(circle at 30% 0, #111827, #020617);
+            }
+            /* Controller Touchpad Style */
+            .controller-touchpad{
+              position: absolute;
+              left: 32%; right: 32%;
+              top: 20%; height: 26%;
+              border-radius: 18px;
+              background: radial-gradient(circle at top, #111827, #020617);
+              box-shadow:
+                0 0 0 1px rgba(30, 64, 175, 0.8),
+                inset 0 0 10px rgba(0, 0, 0, 0.9);
+              overflow: hidden;
+              pointer-events:none;
+            }
+            /* Touchpad Texture Effect */
+            .controller-touchpad::before{
+              content: "";
+              position: absolute; inset: 0;
+              background-image: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.2) 1px, transparent 0);
+              background-size: 6px 6px;
+              opacity: 0.5;
+            }
+            /* Touchpad Light Effect */
+            .controller-touchpad::after{
+              content: "";
+              position: absolute;
+              left: 10%; right: 10%;
+              top: -16%; height: 10px;
+              border-radius: 999px;
+              background: linear-gradient(90deg, rgba(59, 130, 246, 0.8), rgba(56, 189, 248, 0.8));
+              box-shadow:
+                0 0 10px rgba(56, 189, 248, 0.9),
+                0 0 20px rgba(37, 99, 235, 0.9);
+            }
+            /* Touchpad Active State */
+            .controller-touchpad.active{
+              box-shadow:
+                0 0 0 1px rgba(255, 255, 255, 0.9),
+                0 0 25px rgba(255, 255, 255, 0.9),
+                inset 0 0 14px rgba(15, 23, 42, 0.9);
+            }
+            /* Controller Button Style */
+            .controller-button{
+              position: absolute;
+              border-radius: 999px;
+              background: radial-gradient(circle at 30% 20%, #1f2937, #020617);
+              border: 1px solid rgba(15, 23, 42, 0.9);
+              box-shadow:
+                0 6px 10px rgba(0, 0, 0, 0.8),
+                inset 0 0 0 1px rgba(148, 163, 184, 0.15);
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              font-size:0.7rem;
+              color: var(--text-soft);
+              transition: box-shadow .08s ease-out, background .08s, color .08s, transform .08s;
+              z-index:3;
+            }
+            /* Button Label Style */
+            .controller-button.small{font-size:.62rem;}
+            .controller-button.face{width:14%;height:22%;}
+            /* Stick Button Style */
+            .controller-button.stick{
+              width:16%;height:28%;
+              border-radius:50%;
+              box-shadow:
+                0 10px 16px rgba(0,0,0,0.85),
+                inset 0 0 0 1px rgba(148,163,184,0.15);
+              overflow: visible;
+              z-index:10;
+            }
+            /* Stick Nub Style */
+            .stick-nub{
+              position:absolute;
+              inset:30%;
+              border-radius:50%;
+              background: radial-gradient(circle at 30% 20%, #111827, #020617);
+              box-shadow:
+                0 0 0 1px rgba(148,163,184,0.6),
+                0 4px 8px rgba(0,0,0,0.8);
+              transform: translate(var(--dx, 0%), var(--dy, 0%));
+              transition: transform 0.03s linear;
+            }
+            /* Trigger and D-Pad Button Style */
+            .controller-button.trigger{width:18%;height:14%;}
+            .controller-button.dpad{width:12%;height:18%;}
+            .controller-button.center{width:8%;height:14%;font-size:.6rem;}
+            /* Active Button State */
+            .controller-button.active{
+              background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.3), #020617);
+              box-shadow:
+                0 0 0 1px rgba(255, 255, 255, 0.6),
+                0 0 16px rgba(255, 255, 255, 0.9),
+                inset 0 0 0 1px rgba(15, 23, 42, 0.9);
+              color: #e5faff;
+            }
+            /*  Button Colors */
+            .btn-cross .label{color:#4fd1ff;font-size:1rem;}
+            .btn-circle .label{color:#ff6b81;font-size:1rem;}
+            .btn-square .label{color:#b388ff;font-size:1rem;}
+            .btn-triangle .label{color:#7ae582;font-size:1rem;}
+            /* Active Button Label Colors */
+            .controller-button.active.btn-cross .label,
+            .controller-button.active.btn-circle .label,
+            .controller-button.active.btn-square .label,
+            .controller-button.active.btn-triangle .label{
+              color:#e5faff;
+            }
+            
+            /* Positions */
+            .btn-cross{right:10%;top:60%;}
+            .btn-circle{right:4%;top:46%;}
+            .btn-square{right:16%;top:46%;}
+            .btn-triangle{right:10%;top:32%;}
+            
+            .btn-l3{left:23%;top:63%;}
+            .btn-r3{right:23%;top:63%;}
+            
+            .btn-du{left:11%;top:32%;}
+            .btn-dd{left:11%;top:58%;}
+            .btn-dl{left:3%;top:45%;}
+            .btn-dr{left:19%;top:45%;}
+            
+            .btn-l1{left:22%;top:10%;}
+            .btn-r1{right:22%;top:10%;}
+            
+            .btn-l2{left:10%;top:4%;}
+            .btn-r2{right:10%;top:4%;}
+            
+            .btn-share{left:37%;top:30%;}
+            .btn-options{right:37%;top:30%;}
+            
+            .btn-ps{left:50%;top:46%;transform:translateX(-50%);}
+            .btn-ps.controller-button.active{transform:translateX(-50%)!important;}
+            /* Footer Row Style */
+            .controller-footer-row{ /* ab Gamepad API */
+              display:flex;
+              justify-content:space-between;
+              align-items:center;
+              margin-top:10px;
+              font-size:.68rem;
+              letter-spacing:.12em;
+              text-transform:uppercase;
+              color:#000000;
+              position:relative;
+              z-index:1;
+            }
+            /* Accent Color */
+            .controller-footer-row span{color: var(--accent);}
+            /* Active Controller Style */
+            .controller-active{
+              margin-top:6px;
+              font-size:.7rem;
+              letter-spacing:.08em;
+              text-transform:uppercase;
+              color:#000000;
+            }
+            /* Accent Color */
+            .controller-active span{color: var(--accent);}
+                                    
+
+
+            /* Smooth overall */
+            html { scroll-behavior: smooth; }
+
+            body{
+              animation: pageFadeIn .5s ease both;
             }
 
-             @media (max-width: 600px) {
-                .navigation {
-                    padding: 10px 14px;
-                    margin-bottom: 70px;
-                }
-                .navigation h1 {
-                    font-size: 1.5rem;
-                }
-                .navigation ul {
-                    gap: 12px;
-                    justify-content: center;
-                    flex-wrap: wrap;
-                }
-                .container {
-                    padding: 18px;
-                    margin: 0 12px;
-                }
-                h1 {
-                    font-size: 1.6rem;
-                }
-                .subtitle { font-size: 0.85rem; }
-                .video-container { border-radius: 10px; }
-                .video-container img { width: 100%; height: auto; }
-                .button-stop {
-                    width: 8rem;
-                    height: 2.5rem;
-                    font-size: 0.9rem;
-                    border-radius: 30rem;
-                    color: #000;
-                }
-                .status { font-size: 0.85rem; }
+            /* Navigation: etwas "sticky" feeling ohne sticky zu erzwingen */
+            .navigation{
+              backdrop-filter: blur(6px);
+              transition: transform .18s ease, box-shadow .18s ease;
             }
-            @viewport {
-                width: device-width;
-                zoom: 1.0;
+            .navigation:hover{
+              transform: translateY(-2px);
+              box-shadow: 0 16px 40px rgba(0,0,0,.22);
             }
+
+            /* Container: subtiler Entrance */
+            .container{
+              animation: cardUp .45s ease both;
+              transform-origin: center;
+              transition: transform .2s ease, box-shadow .2s ease;
+            }
+            .container:hover{
+              transform: translateY(-4px);
+              box-shadow: 0 26px 70px rgba(0,0,0,.28);
+            }
+
+            /* Subtitle: minimal besser lesbar */
+            .subtitle{
+              letter-spacing: .06em;
+            }
+
+            /* Video: nicer frame + hover glow */
+            .video-container{
+              border: 1px solid rgba(255,255,255,.12);
+              transition: transform .2s ease, box-shadow .2s ease;
+            }
+            .video-container:hover{
+              transform: translateY(-2px);
+              box-shadow: 0 18px 50px rgba(0,0,0,.35);
+            }
+
+            /* Buttons: smoother hover + focus sichtbar */
+            .button-stop-start{
+              cursor: pointer;
+              transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+            }
+            .button-stop-start:hover{
+              filter: brightness(1.03);
+            }
+            .button-stop-start:focus-visible{
+              outline: 3px solid rgba(0,0,0,.25);
+              outline-offset: 4px;
+            }
+
+            /* Status Dot: schöner puls */
+            @keyframes pulse {
+              0% { transform: scale(1); opacity: .7; }
+              50% { transform: scale(1.35); opacity: 1; }
+              100% { transform: scale(1); opacity: .7; }
+            }
+
+            /* Logo unten rechts: leichtes floaten */
+            .bottom-right-image img{
+              animation: floatLogo 3.8s ease-in-out infinite;
+              filter: drop-shadow(0 10px 16px rgba(0,0,0,.25));
+            }
+
+            /* Controller: minimaler "shine" beim hover */
+            .controller-shell{
+              transition: transform .18s ease, box-shadow .18s ease;
+            }
+            .controller-shell:hover{
+              transform: translateY(-3px);
+              box-shadow: 0 26px 60px rgba(128,128,128,.65);
+            }
+            .controller-last-btn{
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end; /* rechtsbündig wie vorher */
+              line-height: 1.3;
+            }
+
+            /* Webcam: Rechter Container soll NICHT durch den Stream beeinflusst werden */
+            .container-wrapper{
+              align-items: flex-start; /* verhindert "Mitziehen" in der Höhe */
+            }
+            /*Hover Styl für image map*/
+            #tooltip {
+            position: absolute;
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px 15px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #333333;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            z-index: 1000;
+            max-width: 200px;
+            word-wrap: break-word;
+        }
+        
+
+
+

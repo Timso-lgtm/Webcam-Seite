@@ -1,73 +1,1073 @@
 <!DOCTYPE html>
-    <html lang="de">
-
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title> GIBI Roboter</title>
-            <link rel="stylesheet" href="styl.css">
-        </head>
-        
-        
-    <body>
-        
-        <nav class="navigation">
-            <h1> Dashboard </h1>
-            <ul>
-                <li><a href="/home"><img src="Home.png" height="20" width="20" ></a></li>
-                <li><a href="/webcam"><img src="Webcam.png" height="20" width="22"></a></li>
-                <li><a href="/team"><img src="Team.png" height="20" width="24"> </a></li>
-                <li><a href="/infos"><img src="Infos.png" height="20" width="20"> </a></li>
-            </ul>
-        </nav>
-        
-
-        <div class="container">
-            <h1> GIBI Roboter</h1>
-            <p class="subtitle">Live Kamerastream </p>
-            
-            <div class="video-container">
-                <img src="/video_feed" alt="Live Kamerastream">
-            </div>  
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GIBI Roboter</title>
+    <link rel="icon" type="image/png" href="MB_star_S-pos.png" />
+  </head>
 
 
-            <div class="button">
-                <button onclick="Start()" class="button-stop-start">Stream Starten</button>
-                <script>
-                    function Start() {
-                        fetch('/start')
-                            .then(response => response.text())
-                            .then(data => {
-                                alert(data);
-                                window.location.href='/webcam'
-                            })
-                    }
-                </script>
-            </div>
+  <body>
+    <nav class="navigation">
+      <h1>Dashboard</h1>
+      <ul>
+        <li><a href="/home"><img src="Home.png" height="20" width="20" /></a></li>
+        <li><a href="/webcam"><img src="Webcam.png" height="20" width="22" /></a></li>
+        <li><a href="/team"><img src="Team.png" height="20" width="24" /></a></li>
+        <li><a href="/infos"><img src="Infos.png" height="20" width="20" /></a></li>
+      </ul>
+    </nav>
 
 
-            <div class="button">
-                <button onclick="Stop()" class="button-stop-start">Stream Stoppen</button>
-                <script>
-                    function Stop() {
-                        fetch('/stop')
-                            .then(response => response.text())
-                            .then(data => {
-                                alert(data);
-                                window.location.href='/webcam'
-                            })
-                    }
-                </script>
-            </div>
+    <div class="bottom-right-image">
+      <img src="Logo.gif" width="90" height="90" />
+    </div>
 
-            
-            
-            <div class="status">
-                <span class="status-dot"></span>
-                <span>Server aktiv</span>
-            </div>
+
+    <div class="container-wrapper">
+      <!-- Kamera -->
+      <div class="container camera-panel">
+        <h1>GIBI Roboter</h1>
+        <p class="subtitle">Live Kamerastream</p>
+
+
+        <div class="video-container">
+          <img src="/video_feed" alt="Live Kamerastream" />
         </div>
-        
-       
-    </body>
-    </html>
+
+
+        <div class="button">
+          <button onclick="Start()" class="button-stop-start">Stream Starten</button>
+        </div>
+
+
+        <div class="button">
+          <button onclick="Stop()" class="button-stop-start">Stream Stoppen</button>
+        </div>
+
+
+        <div class="status">
+          <span class="status-dot"></span>
+          <span>Server aktiv</span>
+        </div>
+      </div>
+
+
+      <!-- Controller -->
+      <div class="container controller-panel">
+        <section class="controller-shell">
+          <div class="controller-top-row">
+            <div class="controller-status" id="controller-status">
+              Controller: <span>nicht verbunden</span>
+            </div>
+            <div class="controller-last-btn" id="controller-last-btn">
+              <span>Letzte Taste:</span>
+              <strong>-</strong>
+            </div>
+          </div>
+
+
+          <div class="controller-body">
+            <div class="controller-base-center"></div>
+            <div class="controller-grip left"></div>
+            <div class="controller-grip right"></div>
+
+
+            <div class="controller-touchpad" data-btn-id="btn-touchpad"></div>
+
+
+            <!-- Face -->
+            <div class="controller-button face btn-cross" data-btn-id="btn-cross"><span class="label">✕</span></div>
+            <div class="controller-button face btn-circle" data-btn-id="btn-circle"><span class="label">○</span></div>
+            <div class="controller-button face btn-square" data-btn-id="btn-square"><span class="label">□</span></div>
+            <div class="controller-button face btn-triangle" data-btn-id="btn-triangle"><span class="label">△</span></div>
+
+
+            <!-- Sticks -->
+            <div class="controller-button stick btn-l3" data-btn-id="btn-l3">
+              <div class="stick-nub" id="stick-l"></div>
+            </div>
+            <div class="controller-button stick btn-r3" data-btn-id="btn-r3">
+              <div class="stick-nub" id="stick-r"></div>
+            </div>
+
+
+            <!-- D-Pad -->
+            <div class="controller-button dpad btn-du small" data-btn-id="btn-du">▲</div>
+            <div class="controller-button dpad btn-dd small" data-btn-id="btn-dd">▼</div>
+            <div class="controller-button dpad btn-dl small" data-btn-id="btn-dl">◀</div>
+            <div class="controller-button dpad btn-dr small" data-btn-id="btn-dr">▶</div>
+
+
+            <!-- Trigger -->
+            <div class="controller-button trigger btn-l1 small" data-btn-id="btn-l1">L1</div>
+            <div class="controller-button trigger btn-r1 small" data-btn-id="btn-r1">R1</div>
+            <div class="controller-button trigger btn-l2 small" data-btn-id="btn-l2">L2</div>
+            <div class="controller-button trigger btn-r2 small" data-btn-id="btn-r2">R2</div>
+
+
+            <!-- Center -->
+            <div class="controller-button center btn-share small" data-btn-id="btn-share">SHARE</div>
+            <div class="controller-button center btn-options small" data-btn-id="btn-options">OPTIONS</div>
+            <div class="controller-button center btn-ps small" data-btn-id="btn-ps">PS</div>
+          </div>
+
+
+          <div class="controller-footer-row">
+            <div>Gamepad-API: <span id="controller-api-state">bereit</span></div>
+          </div>
+
+
+          <div class="controller-active" id="controller-active">
+            Aktive Tasten: <span>–</span>
+          </div>
+        </section>
+      </div>
+    </div>
+
+
+    <!-- JavaScript  -->
+    <script>
+      function lockControllerHeightNow() {
+        const cp = document.querySelector(".controller-panel");
+        if (!cp) return;
+        const h = cp.offsetHeight;
+        if (h > 0) localStorage.setItem("controllerLockedHeight", String(h));
+      }
+
+
+      function Start() {
+        lockControllerHeightNow();
+
+
+        fetch("/start")
+          .then((response) => response.text())
+          .then((data) => {
+            alert(data);
+            localStorage.setItem("cameraState", "on");
+            window.location.href = "/webcam";
+          });
+      }
+
+
+      function Stop() {
+        fetch("/stop")
+          .then((response) => response.text())
+          .then((data) => {
+            alert(data);
+            localStorage.setItem("cameraState", "off");
+            window.location.href = "/webcam";
+          });
+      }
+
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const body = document.body;
+        const cameraPanel = document.querySelector(".camera-panel");
+        const controllerPanel = document.querySelector(".controller-panel");
+
+
+        function applyCameraState() {
+          const state = localStorage.getItem("cameraState") || "off";
+          body.classList.toggle("camera-on", state === "on");
+          body.classList.toggle("camera-off", state !== "on");
+        }
+
+
+        function clearLocks() {
+          if (!cameraPanel || !controllerPanel) return;
+          cameraPanel.style.minHeight = "";
+          cameraPanel.style.maxHeight = "";
+          controllerPanel.style.minHeight = "";
+          controllerPanel.style.maxHeight = "";
+          controllerPanel.style.overflow = "";
+        }
+
+
+        function syncHeights() {
+          if (!cameraPanel || !controllerPanel) return;
+
+
+          if (body.classList.contains("camera-off")) {
+            clearLocks();
+
+
+            const maxH = Math.max(cameraPanel.offsetHeight, controllerPanel.offsetHeight);
+            cameraPanel.style.minHeight = maxH + "px";
+            controllerPanel.style.minHeight = maxH + "px";
+
+
+            localStorage.setItem("controllerLockedHeight", String(maxH));
+          } else {
+            const locked = parseInt(localStorage.getItem("controllerLockedHeight") || "0", 10);
+            const h = locked > 0 ? locked : controllerPanel.offsetHeight;
+
+
+            controllerPanel.style.minHeight = h + "px";
+            controllerPanel.style.maxHeight = h + "px";
+            controllerPanel.style.overflow = "hidden";
+
+
+            cameraPanel.style.minHeight = "";
+            cameraPanel.style.maxHeight = "";
+          }
+        }
+
+
+        applyCameraState();
+
+
+        setTimeout(syncHeights, 50);
+        window.addEventListener("resize", () => setTimeout(syncHeights, 50));
+
+
+        // --- Gamepad UI ---
+        const statusEl = document.getElementById("controller-status");
+        const lastBtn = document.querySelector("#controller-last-btn strong");
+        const apiState = document.getElementById("controller-api-state");
+        const activeSpan = document.querySelector("#controller-active span");
+        const stickL = document.getElementById("stick-l");
+        const stickR = document.getElementById("stick-r");
+
+
+        const map = {
+          0: "btn-cross",
+          1: "btn-circle",
+          2: "btn-square",
+          3: "btn-triangle",
+          4: "btn-l1",
+          5: "btn-r1",
+          6: "btn-l2",
+          7: "btn-r2",
+          8: "btn-share",
+          9: "btn-options",
+          10: "btn-l3",
+          11: "btn-r3",
+          12: "btn-du",
+          13: "btn-dd",
+          14: "btn-dl",
+          15: "btn-dr",
+          16: "btn-ps",
+          17: "btn-touchpad",
+        };
+
+
+        const names = {
+          "btn-cross": "✕",
+          "btn-circle": "○",
+          "btn-square": "□",
+          "btn-triangle": "△",
+          "btn-l1": "L1",
+          "btn-r1": "R1",
+          "btn-l2": "L2",
+          "btn-r2": "R2",
+          "btn-share": "SHARE",
+          "btn-options": "OPTIONS",
+          "btn-l3": "L3",
+          "btn-r3": "R3",
+          "btn-du": "Up",
+          "btn-dd": "Down",
+          "btn-dl": "Left",
+          "btn-dr": "Right",
+          "btn-ps": "PS",
+          "btn-touchpad": "Touchpad",
+        };
+
+
+        const btnEls = {};
+        document.querySelectorAll("[data-btn-id]").forEach((e) => {
+          btnEls[e.dataset.btnId] = e;
+        });
+
+
+        let idx = null;
+        const dz = (v) => (Math.abs(v) < 0.08 ? 0 : v);
+
+
+        function loop() {
+          const gps = navigator.getGamepads();
+          let gp = idx != null ? gps[idx] : gps.find((g) => g);
+          if (!gp) {
+            requestAnimationFrame(loop);
+            return;
+          }
+          idx = gp.index;
+          statusEl.innerHTML = `Controller: <span>${gp.id}</span>`;
+
+
+          const active = [];
+          gp.buttons.forEach((b, i) => {
+            const id = map[i],
+              el = btnEls[id];
+            if (!el) return;
+            if (b.pressed) {
+              el.classList.add("active");
+              active.push(names[id]);
+              lastBtn.textContent = names[id];
+            } else el.classList.remove("active");
+          });
+
+
+          activeSpan.textContent = active.length ? active.join(" · ") : "–";
+
+
+          stickL.style.setProperty("--dx", `${dz(gp.axes[0] || 0) * 35}%`);
+          stickL.style.setProperty("--dy", `${dz(gp.axes[1] || 0) * 35}%`);
+          stickR.style.setProperty("--dx", `${dz(gp.axes[2] || 0) * 35}%`);
+          stickR.style.setProperty("--dy", `${dz(gp.axes[3] || 0) * 35}%`);
+
+
+          requestAnimationFrame(loop);
+        }
+
+
+        if ("getGamepads" in navigator) {
+          apiState.textContent = "bereit";
+          requestAnimationFrame(loop);
+        } else {
+          apiState.textContent = "nicht verfügbar";
+        }
+      });
+    </script>
+  </body>
+</html>
+
+
+<style>
+  /* Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+
+  /* Body */
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffffff 0%, #666666 60%, #000000 90%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  /* CSS Variables */
+  :root {
+    --accent: #000000;
+    --text-soft: #ffffff;
+    --text-main: #000000;
+  }
+
+
+  /* Container Styles */
+  .container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    max-width: 700px;
+    width: 100%;
+    margin: 0;
+    animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+
+  .container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.35);
+  }
+
+
+  .container-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    align-items: flex-start;
+  }
+
+
+  .camera-off .video-container {
+    display: none;
+  }
+
+
+  /* Navigation */
+  .navigation {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 12px 20px;
+    margin: 0 0 70px 0;
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    animation: slideInDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+
+  .navigation:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  }
+
+
+  .navigation h1 {
+    font-size: 1.2em;
+    margin: 0;
+    color: #333;
+    animation: fadeIn 0.8s ease 0.3s both;
+  }
+
+
+  .navigation ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  .navigation li a {
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 10px;
+    position: relative;
+    background: transparent;
+  }
+
+
+  .navigation li a:hover {
+    transform: translateY(-5px) scale(1.15);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6),
+      0 0 60px rgba(255, 255, 255, 0.4), 0 15px 30px rgba(0, 0, 0, 0.3);
+  }
+
+
+  .navigation li a:active {
+    transform: translateY(-2px) scale(1.08);
+  }
+
+
+  .navigation li a img {
+    display: block;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+    position: relative;
+    z-index: 2;
+  }
+
+
+  .navigation li a:hover img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4)) brightness(1.1);
+  }
+
+
+  /* Bottom Right Logo */
+  .bottom-right-image {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    animation: floatLogo 4s ease-in-out infinite;
+    cursor: pointer;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+
+  /* Titles */
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+    animation: fadeInScale 0.7s ease 0.2s both;
+  }
+
+
+  .subtitle {
+    text-align: center;
+    color: #999;
+    margin-bottom: 30px;
+    font-size: 0.9em;
+    letter-spacing: 0.08em;
+    animation: fadeIn 0.8s ease 0.4s both;
+  }
+
+
+  /* Video Container */
+  .video-container {
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    animation: fadeInScale 0.6s ease 0.5s both;
+  }
+
+
+  .video-container:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+
+
+  .video-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+
+  /* Buttons */
+  .button {
+    text-align: center;
+    margin-bottom: 1rem;
+    animation: fadeIn 0.8s ease 0.6s both;
+  }
+
+
+  .button-stop-start {
+    width: 9rem;
+    height: 3rem;
+    border-radius: 30rem;
+    font-size: 15px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+
+  button::before {
+    content: "";
+    width: 0;
+    height: 3rem;
+    border-radius: 30rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #c0c0c0 0%, #000000 100%);
+    transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: block;
+    z-index: -1;
+  }
+
+
+  button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 8px 8px 18px #b5b5b5, -8px -8px 18px #ffffff;
+    filter: brightness(1.05);
+  }
+
+
+  button:hover::before {
+    width: 9rem;
+  }
+
+
+  button:active {
+    transform: translateY(-1px) scale(1);
+    box-shadow: 4px 4px 8px #c5c5c5, -4px -4px 8px #ffffff;
+  }
+
+
+  button:focus-visible {
+    outline: 3px solid rgba(0, 0, 0, 0.3);
+    outline-offset: 5px;
+  }
+
+
+  /* Status */
+  .status {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    color: #999;
+    font-size: 0.9em;
+    animation: fadeIn 1s ease 0.7s both;
+  }
+
+
+  .status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #4caf50;
+    border-radius: 50%;
+    margin-right: 5px;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+  }
+
+
+  /* Controller Shell */
+  .controller-shell {
+    margin-top: 6px;
+    background: radial-gradient(circle at top, #8f8f8f, #b4b4b4 60%, #e0e0e0 100%);
+    border-radius: 20px;
+    padding: 14px 12px 10px;
+    position: relative;
+    box-shadow: 0 18px 40px rgba(128, 128, 128, 0.7);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInScale 0.7s ease 0.3s both;
+  }
+
+
+  .controller-shell:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(128, 128, 128, 0.8);
+  }
+
+
+  .controller-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.25), transparent 60%);
+    opacity: 0.9;
+    pointer-events: none;
+    animation: shimmer 6s ease-in-out infinite;
+  }
+
+
+  .controller-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+
+  .controller-status {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #000000;
+  }
+
+
+  .controller-status span {
+    color: var(--accent);
+  }
+
+
+  .controller-last-btn {
+    font-size: 0.72rem;
+    color: #000000;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.3;
+  }
+
+
+  .controller-last-btn strong {
+    color: #000000;
+  }
+
+
+  .controller-body {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 5 / 2;
+    margin: 0 auto;
+  }
+
+
+  .controller-base-center {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 24%;
+    bottom: 32%;
+    border-radius: 60px;
+    background: radial-gradient(circle at top, #ffffff, #e5e7eb);
+    box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.6), 0 18px 35px rgba(0, 0, 0, 0.9);
+  }
+
+
+  .controller-base-center::after {
+    content: "";
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    top: 40%;
+    bottom: -25%;
+    border-radius: 40px 40px 70px 70px;
+    background: radial-gradient(circle at top, #111827, #020617);
+    box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.8), 0 12px 24px rgba(0, 0, 0, 0.9);
+  }
+
+
+  .controller-grip {
+    position: absolute;
+    top: 36%;
+    width: 30%;
+    height: 65%;
+    border-radius: 80% 40% 80% 40%;
+    background: radial-gradient(circle at 20% 10%, #ffffff, #e5e7eb);
+    box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.5), 0 19px 35px rgba(114, 114, 114, 0.9);
+    overflow: hidden;
+  }
+
+
+  .controller-grip.left {
+    left: 0%;
+    transform: rotate(-8deg);
+  }
+
+
+  .controller-grip.right {
+    right: 0%;
+    transform: scaleX(-1) rotate(-8deg);
+  }
+
+
+  .controller-grip::after {
+    content: "";
+    position: absolute;
+    left: 5%;
+    right: -10%;
+    bottom: -5%;
+    height: 55%;
+    border-radius: 70% 40% 80% 60%;
+    background: radial-gradient(circle at 30% 0, #111827, #020617);
+  }
+
+
+  .controller-touchpad {
+    position: absolute;
+    left: 32%;
+    right: 32%;
+    top: 20%;
+    height: 26%;
+    border-radius: 18px;
+    background: radial-gradient(circle at top, #111827, #020617);
+    box-shadow: 0 0 0 1px rgba(30, 64, 175, 0.8), inset 0 0 10px rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+    pointer-events: none;
+    transition: box-shadow 0.3s ease, background 0.2s ease, transform 0.15s ease;
+  }
+
+
+  .controller-touchpad::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.2) 1px, transparent 0);
+    background-size: 6px 6px;
+    opacity: 0.5;
+  }
+
+
+  .controller-touchpad::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: -16%;
+    height: 10px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.8), rgba(56, 189, 248, 0.8));
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.9), 0 0 20px rgba(37, 99, 235, 0.9);
+    animation: pulseGlow 3s ease-in-out infinite;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+  }
+
+
+  /* Buttons active state */
+  .controller-touchpad.active {
+    background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.3), #020617);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8), 
+                0 0 25px rgba(255, 255, 255, 0.9),
+                inset 0 0 10px rgba(15, 23, 42, 0.9);
+    transform: scale(0.98);
+    animation: buttonPress 0.15s ease;
+  }
+
+
+  .controller-touchpad.active::after {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9));
+    box-shadow: 0 0 15px rgba(255, 255, 255, 1), 
+                0 0 30px rgba(255, 255, 255, 0.9);
+  }
+
+  
+
+
+  /* Controller Buttons */
+  .controller-button {
+    position: absolute;
+    border-radius: 999px;
+    background: radial-gradient(circle at 30% 20%, #1f2937, #020617);
+    border: 2px solid rgba(15, 23, 42, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), inset 0 1px 2px rgba(148, 163, 184, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: var(--text-soft);
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.2s ease-out, 
+                box-shadow 0.2s ease-out, 
+                border-color 0.2s ease-out, 
+                background 0.2s ease-out;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+
+  /* Hover */
+  .controller-button:hover {
+    background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.3), #020617);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8), 
+                0 0 25px rgba(255, 255, 255, 0.9),
+                inset 0 0 10px rgba(15, 23, 42, 0.9);
+    color: #e5faff;
+    border-color: rgba(255, 255, 255, 0.8);
+    z-index: 200;
+  }
+
+
+  .controller-button:hover .label {
+    color: #e5faff;
+  }
+
+
+  /* PS-Button: behält translateX(-50%) beim Hover */
+  .btn-ps {
+    left: 50%;
+    top: 46%;
+    transform: translateX(-50%);
+  }
+
+
+  .btn-ps:hover {
+    transform: translateX(-50%);
+  }
+
+
+  .btn-ps.active {
+    transform: translateX(-50%) translateY(1px) scale(0.95) !important;
+  }
+
+
+  /* Aactive State (gedrückt) */
+  .controller-button.active {
+    background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.3), #020617);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.9),
+      inset 0 0 10px rgba(15, 23, 42, 0.9);
+    color: #e5faff;
+    transform: translateY(1px) scale(0.95);
+    animation: buttonPress 0.15s ease;
+    z-index: 150;
+  }
+
+
+  .controller-button.face {
+    width: 14%;
+    height: 22%;
+  }
+
+
+  .controller-button.stick {
+    width: 16%;
+    height: 28%;
+    border-radius: 50%;
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.75), inset 0 1px 2px rgba(148, 163, 184, 0.1);
+    overflow: visible;
+  }
+
+
+  .stick-nub {
+    position: absolute;
+    inset: 30%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 20%, #111827, #020617);
+    box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.6), 0 4px 8px rgba(0, 0, 0, 0.8);
+    transform: translate(var(--dx, 0%), var(--dy, 0%));
+    transition: transform 0.05s linear;
+  }
+
+
+  .controller-button.trigger {
+    width: 18%;
+    height: 14%;
+  }
+
+
+  .controller-button.dpad {
+    width: 12%;
+    height: 18%;
+  }
+
+
+  .controller-button.center {
+    width: 8%;
+    height: 14%;
+    font-size: 0.6rem;
+  }
+
+
+  .controller-button.small {
+    font-size: 0.62rem;
+  }
+
+
+  .btn-cross .label { color: #4fd1ff; font-size: 1rem; transition: all 0.2s ease; }
+  .btn-circle .label { color: #ff6b81; font-size: 1rem; transition: all 0.2s ease; }
+  .btn-square .label { color: #b388ff; font-size: 1rem; transition: all 0.2s ease; }
+  .btn-triangle .label { color: #7ae582; font-size: 1rem; transition: all 0.2s ease; }
+
+
+  /* Button Positions */
+  .btn-cross { right: 10%; top: 60%; }
+  .btn-circle { right: 4%; top: 46%; }
+  .btn-square { right: 16%; top: 46%; }
+  .btn-triangle { right: 10%; top: 32%; }
+  .btn-l3 { left: 23%; top: 63%; }
+  .btn-r3 { right: 23%; top: 63%; }
+  .btn-du { left: 11%; top: 32%; }
+  .btn-dd { left: 11%; top: 58%; }
+  .btn-dl { left: 3%; top: 45%; }
+  .btn-dr { left: 19%; top: 45%; }
+  .btn-l1 { left: 22%; top: 10%; }
+  .btn-r1 { right: 22%; top: 10%; }
+  .btn-l2 { left: 10%; top: 4%; }
+  .btn-r2 { right: 10%; top: 4%; }
+  .btn-share { left: 37%; top: 30%; }
+  .btn-options { right: 37%; top: 30%; }
+
+
+  .controller-footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #000000;
+    position: relative;
+    z-index: 1;
+  }
+
+
+  .controller-footer-row span {
+    color: var(--accent);
+  }
+
+
+  .controller-active {
+    margin-top: 6px;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #000000;
+  }
+
+
+  .controller-active span {
+    color: var(--accent);
+  }
+
+
+  /* Keyframe Animations */
+  @keyframes slideInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+    50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+  }
+  @keyframes floatLogo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 1; }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(56, 189, 248, 0.9), 0 0 20px rgba(37, 99, 235, 0.9); }
+    50% { box-shadow: 0 0 15px rgba(56, 189, 248, 1), 0 0 30px rgba(37, 99, 235, 1); }
+  }
+  @keyframes buttonPress {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.93); }
+    100% { transform: scale(0.95); }
+  }
+
+
+  /* Responsive */
+  @media (max-width: 980px) {
+    .container-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+    .navigation, .container {
+      max-width: 700px;
+    }
+  }
+
+
+  /* Accesbillity */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>

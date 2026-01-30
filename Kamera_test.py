@@ -54,7 +54,7 @@ def index():
 
 @app.route('/home')
 def home():
-    with open('Index.html', 'r', encoding='utf-8') as f:
+    with open('Home.html', 'r', encoding='utf-8') as f:
         return f.read()
 
 @app.route('/webcam')
@@ -95,5 +95,4 @@ if __name__ == '__main__':
     print("Webcam-Server gestartet!")
     print("Browser: http://localhost:5000")
     print("Für Handy: http://[PC-IP]:5000")
-    app.run(host='0.0.0.0', port=8443, debug=True)
-
+    app.run(host='0.0.0.0', port=5000, debug=False)
